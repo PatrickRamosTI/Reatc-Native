@@ -1,50 +1,53 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../screens/Home";
 import Sobre from "../screens/Sobre";
 import Contato from "../screens/Contato";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import CustomDrawer from "../components/CustomDrawer";
 import Feather from "react-native-vector-icons/Feather";
 
-const Tab = createBottomTabNavigator();
-
 export default function Routes() {
+  const Drawer = createDrawerNavigator();
   return (
-    <Tab.Navigator
+      <Drawer.Navigator
+      drawerContent={CustomDrawer}
       screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: "green",
-        tabBarInactiveTintColor: "red",
-        tabBarActiveBackgroundColor: "gray",
-        tabBarInactiveBackgroundColor: "yellow",
-        tabBarShowLabel: true,
-      }}
-    >
-      <Tab.Screen
+          drawerActiveBackgroundColor: "rgba(0, 249, 214, 0.5)",
+          drawerInactiveBackgroundColor: "rgba(0, 249, 214, 0.5)",
+          drawerActiveTintColor: "rgba(0, 249, 214, 0.5))",
+          drawerInactiveTintColor: "rgba(0, 249, 214, 0.5)",
+          drawerStyle: {
+              backgroundColor: "#00000080",
+              width: 250,
+            },
+        }}
+        >
+        <Drawer.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="home" color={color} size={size} />;
-          },
+          drawerIcon: ({ color, size }) => (
+            <Feather name="home" color={color} size={size} />
+          ),
         }}
       />
-      <Tab.Screen
+      <Drawer.Screen
         name="Sobre"
         component={Sobre}
         options={{
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="file-text" color={color} size={size} />;
-          },
+          drawerIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
+          ),
         }}
       />
-      <Tab.Screen
+      <Drawer.Screen
         name="Contato"
         component={Contato}
         options={{
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="phone-call" color={color} size={size} />;
-          },
+          drawerIcon: ({ color, size }) => (
+            <Feather name="message-square" color={color} size={size} />
+          ),
         }}
       />
-    </Tab.Navigator>
+    </Drawer.Navigator>
   );
 }

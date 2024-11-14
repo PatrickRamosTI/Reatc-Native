@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet,Image, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Home() {
@@ -12,6 +12,8 @@ export default function Home() {
     <View style={styles.container}>
       <Text>Home</Text>
       <Button title="Sobre" onPress={navigationSobre}></Button>
+      <Text style={styles.text}>Abrir Drawer</Text>
+      <Button title="Drawer" onPress={()=> navigation.jumpTo("Home")}></Button>
     </View>
   );
 }
@@ -22,4 +24,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-});
+    
+  });
